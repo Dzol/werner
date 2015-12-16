@@ -1,0 +1,50 @@
+#+TITLE: Werner Hett's 99 Prolog Programs in Erlang
+#+AUTHOR: Joseph Yiasemides
+
+Some of Werner Hett's list programs
+
+* One Way to Read the Programs
+  
+  A *declaritive* style is the theme of these exercises. Consider the
+  procedure ~last/1~:
+  #+BEGIN_SRC erlang
+      last([E])      -> E;
+      last([_|Rest]) -> last(Rest).
+  #+END_SRC
+
+  We can read this as:
+  #+BEGIN_QUOTE
+  The last element of a list with only one element is that very
+  element, otherwise it is the last element of the rest of the
+  list.
+  #+END_QUOTE
+
+  Or, to demonstrate further, the procedure ~element/2~:
+  #+BEGIN_SRC erlang
+      element([E|_], 1)    -> E;
+      element([_|Rest], N) -> element(Rest, N - 1).
+  #+END_SRC
+
+  The above can be read as:
+  #+BEGIN_QUOTE
+  The first element of a list is its head, otherwise the ~n~'th
+  element of a list is the ~n-1~'th element of the rest of the list.
+  #+END_QUOTE
+
+* Prerequisites
+
+  Erlang/OTP: this was built and tested with 18.1 and Rebar 3.
+
+* Make Targets
+
+  To fetch dependencies, build, and test:
+  #+BEGIN_SRC shell
+      make
+  #+END_SRC
+
+  Expect green lights: it's verbose on my machine.
+
+  Build documentaion from comments in the source with a:
+  #+BEGIN_SRC shell
+      make doc
+  #+END_SRC

@@ -1,0 +1,6 @@
+@copyright 2015 Joseph Yiasemides
+@author <joseph.yiasemides@erlang-solutions.com>
+@title Werner Hett's 99 Prolog procedures and predicates in Erlang.
+@doc These are the procedures and predicates from Werner Hett's 99
+Prolog programs, but in Erlang, which was once built with a Prolog.
+@reference Hett, W., See <a href="https://sites.google.com/site/prologsite/prolog-problems">Prolog programs</a> for tasks and solutions.
