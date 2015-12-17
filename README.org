@@ -44,7 +44,7 @@ Some of Werner Hett's list programs
 
   Expect green lights: it's verbose on my machine.
 
-  Build documentaion from comments in the source with a:
+  Build documentation from comments in the source with a:
   #+BEGIN_SRC shell
       make doc
   #+END_SRC
