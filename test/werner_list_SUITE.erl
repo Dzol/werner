@@ -59,6 +59,9 @@ neg() ->
 
      split_above_bound,
 
+     extract_zeroth,
+     extract_above_length,
+
      range_mixed_up,
      range_not_for_integers,
      one_in_range,
@@ -112,7 +115,6 @@ element_of_null_list(_) ->
         error:function_clause ->
             ok
     end.
-
 
 length_of_null_list(_) ->
     try werner_list:length([]) of
@@ -192,6 +194,7 @@ rotate(_) ->
     true = [d,e,f,g,h,a,b,c] =:= werner_list:rotate([a,b,c,d,e,f,g,h], -13).
 
 extract(_) ->
+    {[b,c,d,e,f], [a]} = werner_list:extract([a,b,c,d,e,f], 1),
     {[a,b,d,e,f], [c]} = werner_list:extract([a,b,c,d,e,f], 3).
 
 insert(_) ->
@@ -206,6 +209,24 @@ range_of_negative_bounds(_) ->
 
 range_from_negative_to_positive_bounds(_) ->
     [-9,-8,-7,-6,-5,-4,-3,-2,-1,0,1,2,3,4] = werner_list:range(-9, 4).
+
+extract_zeroth(_) ->
+    try werner_list:extract([foo, bar], 0) of
+        _Value ->
+            ct:fail()
+    catch
+        error:function_clause ->
+            ok
+    end.
+
+extract_above_length(_) ->
+    try werner_list:extract([foo, bar], 3) of
+        _Value ->
+            ct:fail()
+    catch
+        error:function_clause ->
+            ok
+    end.
 
 range_mixed_up(_) ->
     try werner_list:range(4, -9) of

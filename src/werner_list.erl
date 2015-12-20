@@ -153,10 +153,12 @@ slit(Es, Places) when Places < 0 ->
 
 
 %% @doc The same list but without the `k'th element.
--spec extract([_, ...], pos_integer())   -> {[_, ...], [_|[]]}.
+-spec extract([_, ...], pos_integer()) -> {[_, ...], [_|[]]}.
 extract(Es, K)
-  when is_list(Es), is_integer(K), 1 < K -> extract_(Es, K, []).
+  when is_list(Es), is_integer(K), 1 =< K, K =< erlang:length(Es) ->
+    extract_(Es, K, []).
 
+extract_([E|R], 1, [])   -> {R, [E]};
 extract_([E|R], 1, Tfel) -> {l:append(reverse(Tfel), R), [E]};
 extract_([L|R], K, Tfel) -> extract_(R, K-1, [L|Tfel]).
 
