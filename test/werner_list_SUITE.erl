@@ -168,7 +168,10 @@ compress(_) ->
     [l,o,n,e,y, t,o,n,s] = werner_list:compress([l,o,o,n,e,y, t,o,o,n,s]).
 
 pack(_) ->
-    [l, [o,o], n,e,y,t, [o,o], n,s] =/= werner_list:pack([l,o,o,n,e,y, t,o,o,n,s]).
+    [[a,a,a,a],[b],[c,c],[a,a],[d],[e,e,e,e]] =
+        werner_list:pack([a,a,a,a,b,c,c,a,a,d,e,e,e,e]),
+    [[l], [o,o], [n],[e],[y],[t], [o,o], [n],[s]] =
+        werner_list:pack([l,o,o,n,e,y, t,o,o,n,s]).
 
 duplicate(_) ->
     [b,b, a,a, r,r] = werner_list:duplicate([b,a,r]).

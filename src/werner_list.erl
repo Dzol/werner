@@ -86,9 +86,15 @@ compress([B|[C]])        when B =/= C -> [B,C];
 compress([D|[D|_]=Rest])              -> compress(Rest);
 compress([E|[F|_]=Rest]) when E =/= F -> [E|compress(Rest)].
 
-%% @doc This is yet to be written (and tested). The corresponding test has
-%% been made to succeed.
-pack(_) -> no.
+%% @doc Place consecutive duplicates in their own list.
+-spec pack([_, ...]) -> [[_, ...]].
+pack([_|_]=Es)       -> pack(Es, []).
+
+pack([E], [])                        -> [[E]];
+pack([A], [A|_]=X)                   -> [[A|X]];
+pack([A], [B|_]=X)      when A =/= B -> [[A], X];
+pack([A|[A|_]=Rest], X)              -> pack(Rest, [A|X]);
+pack([A|[B|_]=Rest], X) when A =/= B -> [[A|X]|pack(Rest, [])].
 
 %% @doc Duplicate the elements of a list once: `duplicate([f,o,o])'
 %% gives `[f,f,o,o,o,o]'.
