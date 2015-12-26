@@ -43,9 +43,9 @@ last([_|Rest])       -> last(Rest).
 element([E|_], 1)                              -> E;
 element([_|Rest], N) when is_integer(N), N > 1 -> werner_list:element(Rest, N-1).
 
-%% @doc The number of elements in a list. The length of a list with
-%% just one element is one, otherwise the length of a list is one more
-%% than the length of the rest of the list.
+%% @doc The number of elements in a list. The list of just one element
+%% has length one, otherwise a list of more than one element has
+%% length one more than the length of the rest of the list.
 -spec length([_, ...]) -> pos_integer().
 length([_])            -> 1;
 length([_|Rest])       -> 1 + werner_list:length(Rest).
@@ -152,7 +152,7 @@ slit(Es, Places) when Places < 0 ->
     l:length(Es) + Places rem l:length(Es).
 
 
-%% @doc The same list but without the `k'th element.
+%% @doc The same list but with the `k'th element returned separately.
 -spec extract([_, ...], pos_integer()) -> {[_, ...], [_|[]]}.
 extract(Es, K)
   when is_list(Es), is_integer(K), 1 =< K, K =< erlang:length(Es) ->
