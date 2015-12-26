@@ -1,7 +1,8 @@
-#+TITLE: Werner Hett's 99 Prolog Programs in Erlang
+#+TITLE: A Twist on Werner Hett's 99 Prolog Programs
 #+AUTHOR: Joseph Yiasemides
 
-Some of Werner Hett's list programs
+Some of Werner Hett's list programs, with a test suite and
+documentation, in Erlang
 
 * One Way to Read the Programs
   
