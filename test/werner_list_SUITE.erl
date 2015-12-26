@@ -26,8 +26,11 @@ pos() ->
      reverse,
      palindrome,
      flat,
+
      compress,
      pack,
+     encode,
+
      duplicate,
      duplicate_twice,
      drop,
@@ -172,6 +175,10 @@ pack(_) ->
         werner_list:pack([a,a,a,a,b,c,c,a,a,d,e,e,e,e]),
     [[l], [o,o], [n],[e],[y],[t], [o,o], [n],[s]] =
         werner_list:pack([l,o,o,n,e,y, t,o,o,n,s]).
+
+encode(_) ->
+    [{4,a}, b, {2,c}, {2,a}, d, {4,e}] =
+        werner_list:encode([a,a,a,a,b,c,c,a,a,d,e,e,e,e]).
 
 duplicate(_) ->
     [b,b, a,a, r,r] = werner_list:duplicate([b,a,r]).

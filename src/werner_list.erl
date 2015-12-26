@@ -18,6 +18,7 @@
          reverse/1, flat/1,
 
          compress/1, pack/1,
+         encode/1,
 
          duplicate/1, duplicate/2,
          drop/2, split/2, slice/3, rotate/2,
@@ -95,6 +96,13 @@ pack([A], [A|_]=X)                   -> [[A|X]];
 pack([A], [B|_]=X)      when A =/= B -> [[A], X];
 pack([A|[A|_]=Rest], X)              -> pack(Rest, [A|X]);
 pack([A|[B|_]=Rest], X) when A =/= B -> [[A|X]|pack(Rest, [])].
+
+%% @doc The modified <i>run-length</i> encoding.
+-spec encode([[_, ...]]) -> [{pos_integer(), _}].
+encode(Es)               -> P = pack(Es), l:map(fun encode_/1, P).
+
+encode_([I])      -> I;
+encode_([I|_]=Es) -> {l:length(Es), I}.
 
 %% @doc Duplicate the elements of a list once: `duplicate([f,o,o])'
 %% gives `[f,f,o,o,o,o]'.
