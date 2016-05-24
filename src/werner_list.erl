@@ -27,7 +27,9 @@
 
          range/1, range/2,
 
-         random_selection/2]).
+         random_selection/2,
+
+         permutations/1]).
 
 
 %% @doc The last element of a list. The last element of a list with
@@ -198,3 +200,12 @@ random_selection(Es, N) when N > 0         ->
 
 pick(Es) ->
     {_, [E]} = extract(Es, crypto:rand_uniform(1, werner_list:length(Es))), E.
+
+%% @doc Output a list of all the permutations of the elements in the
+%% input list.
+-spec permutations([_]) -> [ [_] ].
+permutations([]) ->
+    [ [] ];
+permutations(X) ->
+    [ [Hd|Tl] || Hd <- X, Tl <- permutations(X -- [Hd]) ].
+

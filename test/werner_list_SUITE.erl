@@ -57,7 +57,11 @@ pos() ->
      range_of_negative_bounds,
      range_from_negative_to_positive_bounds,
 
-     random_selection_are_members].
+     random_selection_are_members,
+
+     permutation
+    ].
+
 
 neg() ->
 
@@ -280,3 +284,8 @@ random_selection_are_members(_) ->
 
 in(E) ->
     lists:member(E, [4,8,15,16,23,42]).
+
+permutation(_) ->
+    [[a,b,c], [a,c,b],
+     [b,a,c], [b,c,a],
+     [c,a,b], [c,b,a]] = werner_list:permutations([a,b,c]).
