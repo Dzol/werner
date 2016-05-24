@@ -1,3 +1,15 @@
+%% ===================================================================
+%% @copyright 2015 Joseph Yiasemides
+%% @author <joseph.yiasemides@erlang-solutions.com>
+%% @doc Test suite for Werner Hett's list procedures and predicates in
+%% Erlang. These are the procedures and predicates from Werner Hett's
+%% <i>99 Prolog programs</i>, but in Erlang, which was once built with
+%% a Prolog. The procedures herein take proper lists, i.e. lists
+%% terminated by the sentinal `[]'.
+%% @reference Hett, W., See <a href="https://sites.google.com/site/prologsite/prolog-problems">Prolog programs</a> for tasks and solutions.
+%% @end
+%% ===================================================================
+
 -module(werner_list_SUITE).
 -compile([export_all]).
 
