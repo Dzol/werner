@@ -1,3 +1,5 @@
+[[https://travis-ci.org/Dzol/werner][https://travis-ci.org/Dzol/werner.svg?branch=master]]
+
 #+TITLE: A Twist on Werner Hett's 99 Prolog Programs
 #+AUTHOR: Joseph Yiasemides
 
