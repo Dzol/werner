@@ -1,0 +1,192 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Module werner_list</title>
+<link rel="stylesheet" type="text/css" href="stylesheet.css" title="EDoc">
+</head>
+<body bgcolor="white">
+<div class="navbar"><a name="#navbar_top"></a><table width="100%" border="0" cellspacing="0" cellpadding="2" summary="navigation bar"><tr><td><a href="overview-summary.html" target="overviewFrame">Overview</a></td><td><a href="http://www.erlang.org/"><img src="erlang.png" align="right" border="0" alt="erlang logo"></a></td></tr></table></div>
+<hr>
+
+<h1>Module werner_list</h1>
+<ul class="index"><li><a href="#description">Description</a></li><li><a href="#index">Function Index</a></li><li><a href="#functions">Function Details</a></li></ul>Werner Hett's list procedures and predicates in Erlang.
+<p>Copyright © 2015 Joseph Yiasemides</p>
+
+<p><b>Authors:</b> <a href="mailto:joseph.yiasemides@erlang-solutions.com"><tt>joseph.yiasemides@erlang-solutions.com</tt></a>.</p>
+<p><b>References</b><ul><li>Hett, W., See <a href="https://sites.google.com/site/prologsite/prolog-problems">Prolog programs</a> for tasks and solutions.</li></ul></p>
+
+<h2><a name="description">Description</a></h2>Werner Hett's list procedures and predicates in Erlang.
+  These are the procedures and predicates from Werner Hett's <i>99
+  Prolog programs</i>, but in Erlang, which was once built with a
+  Prolog. The procedures herein take proper lists, i.e. lists
+  terminated by the sentinal <code>[]</code>.
+<h2><a name="index">Function Index</a></h2>
+<table width="100%" border="1" cellspacing="0" cellpadding="2" summary="function index"><tr><td valign="top"><a href="#compress-1">compress/1</a></td><td>Successive elements are always different in a compressed
+  list.</td></tr>
+<tr><td valign="top"><a href="#drop-2">drop/2</a></td><td>Drop the <code>n</code>th element of a list, retaining the elements
+  either side.</td></tr>
+<tr><td valign="top"><a href="#duplicate-1">duplicate/1</a></td><td>Duplicate the elements of a list once: <code>duplicate([f,o,o])</code>
+  gives <code>[f,f,o,o,o,o]</code>.</td></tr>
+<tr><td valign="top"><a href="#duplicate-2">duplicate/2</a></td><td>Duplicate the elements of a list a given number of times:
+  <code>duplicate([f,o,o], 2)</code> gives <code>[f,f,f,o,o,o,o,o,o]</code>.</td></tr>
+<tr><td valign="top"><a href="#element-2">element/2</a></td><td>The <code>n</code>th elemenet of a list.</td></tr>
+<tr><td valign="top"><a href="#encode-1">encode/1</a></td><td>The modified <i>run-length</i> encoding.</td></tr>
+<tr><td valign="top"><a href="#extract-2">extract/2</a></td><td>The same list but with the <code>k</code>th element returned separately.</td></tr>
+<tr><td valign="top"><a href="#flat-1">flat/1</a></td><td>Flat lists do <b>NOT</b> have elements which are lists
+  themselves.</td></tr>
+<tr><td valign="top"><a href="#insert-3">insert/3</a></td><td>Insert an element into a given position in the list.</td></tr>
+<tr><td valign="top"><a href="#last-1">last/1</a></td><td>The last element of a list.</td></tr>
+<tr><td valign="top"><a href="#length-1">length/1</a></td><td>The number of elements in a list.</td></tr>
+<tr><td valign="top"><a href="#pack-1">pack/1</a></td><td>Place consecutive duplicates in their own list.</td></tr>
+<tr><td valign="top"><a href="#palindrome-1">palindrome/1</a></td><td>Is this list a palindrome? A palindrome reads the same forward
+  and backward, or in reverse.</td></tr>
+<tr><td valign="top"><a href="#permutations-1">permutations/1</a></td><td>Output a list of all the permutations of the elements in the
+  input list.</td></tr>
+<tr><td valign="top"><a href="#random_selection-2">random_selection/2</a></td><td>Build a list of randomly selected values.</td></tr>
+<tr><td valign="top"><a href="#range-1">range/1</a></td><td>Equivalent to <a href="#range-2"><tt>range(0, Last)</tt></a>.
+</td></tr>
+<tr><td valign="top"><a href="#range-2">range/2</a></td><td>Build a list containing all the integers within a given range.</td></tr>
+<tr><td valign="top"><a href="#reverse-1">reverse/1</a></td><td>The list of elements but back-to-front.</td></tr>
+<tr><td valign="top"><a href="#rotate-2">rotate/2</a></td><td>Rotate a list <code>n</code> places to the left: <code>n</code> can be +ve or -ve.</td></tr>
+<tr><td valign="top"><a href="#slice-3">slice/3</a></td><td>Slice-away either end of a list from a <i>start</i> position
+  to a <i>stop</i> postition.</td></tr>
+<tr><td valign="top"><a href="#split-2">split/2</a></td><td>Split a list into two parts: the length of the first part is
+  given.</td></tr>
+</table>
+
+<h2><a name="functions">Function Details</a></h2>
+
+<h3 class="function"><a name="compress-1">compress/1</a></h3>
+<div class="spec">
+<p><tt>compress(Rest::[term(), ...]) -&gt; [term(), ...]</tt><br></p>
+</div><p>Successive elements are always different in a compressed
+  list. Eliminate consecutive duplicates.</p>
+
+<h3 class="function"><a name="drop-2">drop/2</a></h3>
+<div class="spec">
+<p><tt>drop(Rest::[term(), ...], N::pos_integer()) -&gt; [term(), ...]</tt><br></p>
+</div><p>Drop the <code>n</code>th element of a list, retaining the elements
+  either side.</p>
+
+<h3 class="function"><a name="duplicate-1">duplicate/1</a></h3>
+<div class="spec">
+<p><tt>duplicate(Es::[term(), ...]) -&gt; [term(), ...]</tt><br></p>
+</div><p>Duplicate the elements of a list once: <code>duplicate([f,o,o])</code>
+  gives <code>[f,f,o,o,o,o]</code>.</p>
+
+<h3 class="function"><a name="duplicate-2">duplicate/2</a></h3>
+<div class="spec">
+<p><tt>duplicate(Es::[term(), ...], Times::pos_integer()) -&gt; [term(), ...]</tt><br></p>
+</div><p>Duplicate the elements of a list a given number of times:
+  <code>duplicate([f,o,o], 2)</code> gives <code>[f,f,f,o,o,o,o,o,o]</code>.</p>
+
+<h3 class="function"><a name="element-2">element/2</a></h3>
+<div class="spec">
+<p><tt>element(Rest::[term(), ...], N::pos_integer()) -&gt; term()</tt><br></p>
+</div><p>The <code>n</code>th elemenet of a list. The first element of a list is
+  its head, otherwise the <code>n</code>th element of a list is the <code>n - 1</code>th
+  element of the rest of the list.</p>
+
+<h3 class="function"><a name="encode-1">encode/1</a></h3>
+<div class="spec">
+<p><tt>encode(Es::[[term(), ...]]) -&gt; [{pos_integer(), term()}]</tt><br></p>
+</div><p>The modified <i>run-length</i> encoding.</p>
+
+<h3 class="function"><a name="extract-2">extract/2</a></h3>
+<div class="spec">
+<p><tt>extract(Es::[term(), ...], K::pos_integer()) -&gt; {[term(), ...], [term() | []]}</tt><br></p>
+</div><p>The same list but with the <code>k</code>th element returned separately.</p>
+
+<h3 class="function"><a name="flat-1">flat/1</a></h3>
+<div class="spec">
+<p><tt>flat(Arg::[term(), ...]) -&gt; [term(), ...]</tt><br></p>
+</div><p>Flat lists do <b>NOT</b> have elements which are lists
+  themselves. Flatten a nested list structure: transform a list where
+  elements may themselves be lists by building a list of their
+  elements.</p>
+
+<h3 class="function"><a name="insert-3">insert/3</a></h3>
+<div class="spec">
+<p><tt>insert(Rest::[term(), ...], E::term(), N::pos_integer()) -&gt; [term(), ...]</tt><br></p>
+</div><p>Insert an element into a given position in the list.</p>
+
+<h3 class="function"><a name="last-1">last/1</a></h3>
+<div class="spec">
+<p><tt>last(Rest::[term(), ...]) -&gt; term()</tt><br></p>
+</div><p>The last element of a list. The last element of a list with
+  only one element is that very element, otherwise the last element
+  of a list is the last element of the rest of the list.</p>
+
+<h3 class="function"><a name="length-1">length/1</a></h3>
+<div class="spec">
+<p><tt>length(Rest::[term(), ...]) -&gt; pos_integer()</tt><br></p>
+</div><p>The number of elements in a list. The list of just one element
+  has length one, otherwise a list of more than one element has
+  length one more than the length of the rest of the list.</p>
+
+<h3 class="function"><a name="pack-1">pack/1</a></h3>
+<div class="spec">
+<p><tt>pack(Es::[term(), ...]) -&gt; [[term(), ...]]</tt><br></p>
+</div><p>Place consecutive duplicates in their own list.</p>
+
+<h3 class="function"><a name="palindrome-1">palindrome/1</a></h3>
+<div class="spec">
+<p><tt>palindrome(Es::[term(), ...]) -&gt; boolean()</tt><br></p>
+</div><p>Is this list a palindrome? A palindrome reads the same forward
+  and backward, or in reverse. Change this coz unification is like
+  cheating.</p>
+
+<h3 class="function"><a name="permutations-1">permutations/1</a></h3>
+<div class="spec">
+<p><tt>permutations(X::[term()]) -&gt; [[term()]]</tt><br></p>
+</div><p>Output a list of all the permutations of the elements in the
+  input list.</p>
+
+<h3 class="function"><a name="random_selection-2">random_selection/2</a></h3>
+<div class="spec">
+<p><tt>random_selection(Es::[term()], N::pos_integer()) -&gt; [term()]</tt><br></p>
+</div><p>Build a list of randomly selected values. This is like
+  sampling <b>with</b> replacement.</p>
+
+<h3 class="function"><a name="range-1">range/1</a></h3>
+<div class="spec">
+<p><tt>range(Last) -&gt; any()</tt></p>
+</div><p>Equivalent to <a href="#range-2"><tt>range(0, Last)</tt></a>.</p>
+
+
+<h3 class="function"><a name="range-2">range/2</a></h3>
+<div class="spec">
+<p><tt>range(M::integer(), N::integer()) -&gt; [integer()]</tt><br></p>
+</div><p>Build a list containing all the integers within a given range.</p>
+
+<h3 class="function"><a name="reverse-1">reverse/1</a></h3>
+<div class="spec">
+<p><tt>reverse(Rest::[term(), ...]) -&gt; [term(), ...]</tt><br></p>
+</div><p>The list of elements but back-to-front. The reverse of a list
+  with just one element is that very list (of one element), otherwise
+  the reverse of a list is the reverse of the rest of the list
+  followed by the element at the head of the list.</p>
+
+<h3 class="function"><a name="rotate-2">rotate/2</a></h3>
+<div class="spec">
+<p><tt>rotate(Es::[term(), ...], Places::integer()) -&gt; [term(), ...]</tt><br></p>
+</div><p>Rotate a list <code>n</code> places to the left: <code>n</code> can be +ve or -ve.</p>
+
+<h3 class="function"><a name="slice-3">slice/3</a></h3>
+<div class="spec">
+<p><tt>slice(Es::[term(), ...], Start::pos_integer(), Stop::pos_integer()) -&gt; [term(), ...]</tt><br></p>
+</div><p>Slice-away either end of a list from a <i>start</i> position
+  to a <i>stop</i> postition.</p>
+
+<h3 class="function"><a name="split-2">split/2</a></h3>
+<div class="spec">
+<p><tt>split(Rest::[term(), ...], N::pos_integer()) -&gt; {[term(), ...], [term(), ...]}</tt><br></p>
+</div><p>Split a list into two parts: the length of the first part is
+  given.</p>
+<hr>
+
+<div class="navbar"><a name="#navbar_bottom"></a><table width="100%" border="0" cellspacing="0" cellpadding="2" summary="navigation bar"><tr><td><a href="overview-summary.html" target="overviewFrame">Overview</a></td><td><a href="http://www.erlang.org/"><img src="erlang.png" align="right" border="0" alt="erlang logo"></a></td></tr></table></div>
+<p><i>Generated by EDoc, Mar 22 2017, 14:11:34.</i></p>
+</body>
+</html>

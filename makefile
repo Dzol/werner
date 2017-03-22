@@ -6,7 +6,7 @@ test:
 	$(REBAR) ct
 
 doc:
-	$(REBAR) edoc
+	$(REBAR) edoc; mv doc docs
 
 type:
 	$(REBAR) dialyzer
